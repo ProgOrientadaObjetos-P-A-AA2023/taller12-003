@@ -14,6 +14,8 @@ import paquete01.Televisor;
  */
 public class VentasTvs {
     double precioTotal;
+    double tvCaro;
+    String marcaTvCaro;
     ArrayList<Televisor> televisores;
     String marcasVendidas;
     
@@ -31,17 +33,44 @@ public class VentasTvs {
             s = s + televisores.get(i).obtenerPrecio();
             
         }
-        precioTotal = s;
-        
+        precioTotal = s;        
     }
     
     public double obtenerPrecioTotal(){
         return precioTotal;
     }
     
+    public void establecerMarcasVendidas(){
+        marcasVendidas = "";
+        for(int i=0;i<obtenerTelevisores().size();i++){
+            marcasVendidas = String.format("%s[%d] %s\n", 
+                    marcasVendidas,i+1,
+                    obtenerTelevisores().get(i).obtenerMarca());
+        }
+    }    
         
     public String obtenerMarcasVendidas(){
         return marcasVendidas;
     }
     
+    public void establecerTelevisorMasCaro(){
+        double s = obtenerTelevisores().get(0).obtenerPrecio();
+        String m = obtenerTelevisores().get(0).obtenerMarca();
+        for (int i=0;i<obtenerTelevisores().size();i++) {
+            if (s<obtenerTelevisores().get(i).obtenerPrecio()) {
+                s = obtenerTelevisores().get(i).obtenerPrecio();
+                m = obtenerTelevisores().get(i).obtenerMarca();
+            }
+        }
+        tvCaro = s;
+        marcaTvCaro  = m;
+    }
+    
+    public String obtenerMarcasTvCaro(){
+        return marcaTvCaro;
+    }
+    
+    public double obtenerTvCaro(){
+        return tvCaro;
+    }
 }
