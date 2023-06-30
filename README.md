@@ -7,3 +7,4 @@
 ### Problema 02
 
 * Analice la problemática del Problema02, regenere la solución aplicando **Open/closed principle**
+
